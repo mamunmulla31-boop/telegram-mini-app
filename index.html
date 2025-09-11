@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Earn & Reward - Ad Astra</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    header {
+      background: #4CAF50;
+      color: white;
+      padding: 12px;
+      font-size: 18px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+    }
+    .container {
+      margin-top: 40px;
+      padding: 20px;
+    }
+    button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    button:active {
+      background: #3e8e41;
+    }
+    .counter {
+      margin-top: 20px;
+      font-size: 22px;
+      font-weight: bold;
+      color: #333;
+    }
+    .ads {
+      margin-top: 30px;
+    }
+    .ad-box {
+      margin: 15px auto;
+      padding: 10px;
+      border: 1px solid #ccc;
+      min-height: 90px;
+      background: white;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header with Date -->
+  <header>
+    <div>Earn & Reward</div>
+    <div id="todayDate"></div>
+  </header>
+
+  <div class="container">
+    <button onclick="startEarn()">🚀 Start Earn</button>
+    <div class="counter">Ads Watched Today: <span id="adCount">0</span></div>
+    
+    <div class="ads">
+      <h3>Sponsored Ads</h3>
+      <div id="bannerAd" class="ad-box">[Banner Ad]</div>
+      <div id="nativeAd" class="ad-box">[Native Banner Ad]</div>
+      <div id="popAd" class="ad-box">[Popunder Ad]</div>
+      <div id="smartlink" class="ad-box">[Smartlink Ad]</div>
+    </div>
+  </div>
+
+  <script>
+    // ========================
+    // Date (Bangladesh Time)
+    // ========================
+    function updateDate() {
+      let now = new Date();
+      let options = { timeZone: "Asia/Dhaka" };
+      let bdDate = new Intl.DateTimeFormat("en-GB", options).format(now);
+      document.getElementById("todayDate").innerText = bdDate;
+    }
+    updateDate();
+
+    // ========================
+    // Daily Counter (reset 00:00)
+    // ========================
+    let adCount = localStorage.getItem("adCount") || 0;
+    let lastDate = localStorage.getItem("lastDate");
+    let today = new Intl.DateTimeFormat("en-GB", { timeZone: "Asia/Dhaka" }).format(new Date());
+
+    if (lastDate !== today) {
+      adCount = 0;
+      localStorage.setItem("adCount", adCount);
+      localStorage.setItem("lastDate", today);
+    }
+    document.getElementById("adCount").innerText = adCount;
+
+    // ========================
+    // Start Earn Button (Trigger Popunder / Smartlink)
+    // ========================
+    function startEarn() {
+      // Popunder
+      window.open("YOUR_POPUNDER_URL", "_blank");
+
+      // Smartlink
+      window.open("YOUR_SMARTLINK_URL", "_blank");
+
+      // Counter increase
+      adCount++;
+      localStorage.setItem("adCount", adCount);
+      document.getElementById("adCount").innerText = adCount;
+    }
+
+    // ========================
+    // Load Banner + Native Ads
+    // ========================
+    function loadAds() {
+      document.getElementById("bannerAd").innerHTML = '<script src="YOUR_BANNER_TAG"><\/script>';
+      document.getElementById("nativeAd").innerHTML = '<script src="YOUR_NATIVE_TAG"><\/script>';
+      document.getElementById("popAd").innerHTML = 'Popunder linked to Start Earn button.';
+      document.getElementById("smartlink").innerHTML = 'Smartlink linked to Start Earn button.';
+    }
+    loadAds();
+  </script>
+</body>
+</html>
