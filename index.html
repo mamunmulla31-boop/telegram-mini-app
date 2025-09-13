@@ -5,283 +5,217 @@
   <title>Mini App - Adsterra Earn</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- ✅ Adsterra Popunder / Interstitial Script -->
-  <script type='text/javascript' src='https://www.profitablecpmrate.com/xnnrtbjs/2e/45/62/2e4562fef89f8c33f8d3c4b3b9d3e6b0.js'></script>
-
-  <!-- ✅ Adsterra Banner Example -->
+  <!-- Banner Ads / Smartlink can be included wherever needed -->
   <script type='text/javascript' src='https://www.profitablecpmrate.com/xxxyyy.js'></script>
 
   <style>
-    body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: #f0f2f5;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background: linear-gradient(45deg, #007bff, #00c6ff);
-      color: white;
-      padding: 15px;
-      font-size: 22px;
-      font-weight: bold;
-      text-align: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-    }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; margin: 0; padding: 0; }
+    header { background: linear-gradient(45deg, #007bff, #00c6ff); color: white; padding: 15px; font-size: 22px; font-weight: bold; text-align: center; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
     .container { margin: 15px; }
-    .card {
-      background: white;
-      border-radius: 16px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-      text-align: center;
-      transition: transform 0.2s ease;
-    }
+    .card { background: white; border-radius: 16px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); text-align: center; transition: transform 0.2s ease; }
     .card:hover { transform: scale(1.01); }
-    h3 { margin: 10px 0; color: #333; }
-    button {
-      background: #007bff;
-      color: white;
-      border: none;
-      padding: 10px 16px;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 15px;
-      margin-top: 8px;
-    }
+    h3, h4 { margin: 10px 0; color: #333; }
+    button { background: #007bff; color: white; border: none; padding: 12px 18px; border-radius: 10px; cursor: pointer; font-size: 16px; margin-top: 10px; box-shadow: 0 3px 6px rgba(0,0,0,0.2); }
     button:hover { background: #0056b3; }
-    input, select {
-      padding: 10px;
-      width: 90%;
-      margin: 8px 0;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-    }
+    input, select { padding: 10px; width: 90%; margin: 8px 0; border: 1px solid #ddd; border-radius: 8px; }
     .admin { display: none; text-align: left; }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 10px;
-      font-size: 14px;
-    }
-    table, th, td { border: 1px solid #ddd; padding: 6px; text-align: center; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    table, th, td { border: 1px solid #ddd; padding: 8px; font-size: 14px; }
     th { background: #f9f9f9; }
-    footer {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background: white;
-      text-align: center;
-      padding: 10px;
-      border-top: 1px solid #ddd;
-    }
+    footer { position: fixed; bottom: 0; width: 100%; background: white; text-align: center; padding: 10px; border-top: 1px solid #ddd; }
   </style>
 </head>
 <body>
-  <header>💰 Adsterra Mini App</header>
 
-  <!-- Banner Ad -->
+<header>💰 Adsterra Mini App</header>
+
+<div class="container">
+
+  <!-- আজকের তারিখ -->
   <div class="card">
-    <h4>Sponsored</h4>
-    <script type="text/javascript" src="https://www.profitablecpmrate.com/xxxyyy.js"></script>
+    <p>📅 আজকের তারিখ: <span id="today"></span></p>
   </div>
 
-  <div class="container">
+  <!-- Balance & Counter -->
+  <div class="card">
+    <h3>💵 Balance: <span id="balance">0</span> ৳</h3>
+    <p>📊 আজকে Ads দেখা হয়েছে: <span id="counter">0</span></p>
+    <button onclick="startTask()">▶ Start Task (Show Ad)</button>
 
-    <!-- আজকের তারিখ -->
-    <div class="card">
-      <p>📅 আজকের তারিখ: <span id="today"></span></p>
+    <!-- Banner Ad -->
+    <div style="margin-top:15px;">
+      <h4>Sponsored</h4>
+      <script type="text/javascript" src="https://www.profitablecpmrate.com/xxxyyy.js"></script>
     </div>
-
-    <!-- Balance & Counter -->
-    <div class="card">
-      <h3>💵 Balance: <span id="balance">0</span> ৳</h3>
-      <p>📊 আজকে Ads দেখা হয়েছে: <span id="counter">0</span></p>
-      <button onclick="startTask()">▶ Start Task (Show Ad)</button>
-    </div>
-
-    <!-- Withdraw -->
-    <div class="card">
-      <h3>💳 Withdraw</h3>
-      <select id="method">
-        <option>Bkash</option>
-        <option>Nagad</option>
-      </select><br>
-      <input type="text" id="number" placeholder="Enter Number"><br>
-      <input type="number" id="amount" placeholder="Amount"><br>
-      <button onclick="withdraw()">Request Withdraw</button>
-    </div>
-
-    <!-- Admin Login -->
-    <div class="card">
-      <h3>🔑 Admin Panel</h3>
-      <input type="password" id="adminPass" placeholder="Enter Password">
-      <button onclick="loginAdmin()">Login</button>
-    </div>
-
-    <!-- Admin Panel -->
-    <div class="card admin" id="adminPanel">
-      <h3>📋 Admin Dashboard</h3>
-      <p>Allowed IP: <input type="text" id="allowedIp" value="0"> (0 = All)</p>
-      <button onclick="updateIp()">Update IP Restriction</button>
-
-      <h4>👥 Users List</h4>
-      <table>
-        <thead><tr><th>User</th><th>Ads Seen</th><th>Balance</th></tr></thead>
-        <tbody id="userTable"></tbody>
-      </table>
-
-      <h4>💳 Withdraw Requests</h4>
-      <table>
-        <thead>
-          <tr><th>User</th><th>Method</th><th>Number</th><th>Amount</th><th>Date</th><th>Action</th></tr>
-        </thead>
-        <tbody id="withdrawTable"></tbody>
-      </table>
-    </div>
-
   </div>
 
-  <!-- Footer Banner -->
-  <footer>
-    <h4>Sponsored</h4>
-    <script type="text/javascript" src="https://www.profitablecpmrate.com/xxxyyy.js"></script>
-  </footer>
+  <!-- Withdraw -->
+  <div class="card">
+    <h3>💳 Withdraw</h3>
+    <select id="method">
+      <option>Bkash</option>
+      <option>Nagad</option>
+    </select><br>
+    <input type="text" id="number" placeholder="Enter Number"><br>
+    <input type="number" id="amount" placeholder="Enter Amount"><br>
+    <button onclick="withdraw()">Request Withdraw</button>
 
-  <script>
-    let counter = localStorage.getItem("counter") || 0;
-    let balance = localStorage.getItem("balance") || 0;
-    let lastDate = localStorage.getItem("lastDate") || "";
-    let today = new Date().toLocaleDateString();
+    <!-- Banner Ad -->
+    <div style="margin-top:15px;">
+      <h4>Sponsored</h4>
+      <script type="text/javascript" src="https://www.profitablecpmrate.com/xxxyyy.js"></script>
+    </div>
+  </div>
 
-    document.getElementById("today").innerText = today;
+  <!-- Admin Login -->
+  <div class="card">
+    <h3>🔑 Admin Panel</h3>
+    <input type="password" id="adminPass" placeholder="Enter Password">
+    <button onclick="loginAdmin()">Login</button>
+  </div>
 
-    if (lastDate !== today) {
-      counter = 0;
-      localStorage.setItem("lastDate", today);
-    }
+  <!-- Admin Panel -->
+  <div class="card admin" id="adminPanel">
+    <h3>📋 Admin Dashboard</h3>
+    <p>Allowed IP: <input type="text" id="allowedIp" value="0"> (0 = All)</p>
+    <button onclick="updateIp()">Update IP Restriction</button>
 
-    document.getElementById("counter").innerText = counter;
-    document.getElementById("balance").innerText = balance;
+    <p>💰 Points per Ad: <input type="number" id="adPoint" value="1" min="1"></p>
+    <button onclick="updateAdPoint()">Update Points</button>
 
-    function startTask() {
-      // ✅ Interstitial Ad
-      window.open("https://www.profitablecpmrate.com/xnnrtbjs", "_blank");
+    <h4>👥 Users List</h4>
+    <table>
+      <thead><tr><th>User</th><th>Ads Seen</th><th>Balance</th></tr></thead>
+      <tbody id="userTable"></tbody>
+    </table>
 
-      counter++;
-      balance = parseInt(balance) + 1;
+    <h4>💳 Withdraw Requests</h4>
+    <table>
+      <thead><tr><th>User</th><th>Method</th><th>Number</th><th>Amount</th><th>Date</th></tr></thead>
+      <tbody id="withdrawTable"></tbody>
+    </table>
+  </div>
 
-      localStorage.setItem("counter", counter);
-      localStorage.setItem("balance", balance);
+</div>
 
-      document.getElementById("counter").innerText = counter;
-      document.getElementById("balance").innerText = balance;
+<!-- Footer Banner Ad -->
+<footer>
+  <h4>Sponsored</h4>
+  <script type="text/javascript" src="https://www.profitablecpmrate.com/xxxyyy.js"></script>
+</footer>
 
-      saveUser();
-    }
+<script>
+let counter = parseInt(localStorage.getItem("counter") || 0);
+let balance = parseInt(localStorage.getItem("balance") || 0);
+let lastDate = localStorage.getItem("lastDate") || "";
+let today = new Date().toLocaleDateString();
+let adPoint = parseInt(localStorage.getItem("adPoint")) || 1;
 
-    function withdraw() {
-      let method = document.getElementById("method").value;
-      let number = document.getElementById("number").value;
-      let amount = document.getElementById("amount").value;
-      let uid = localStorage.getItem("uid") || "user-" + Math.floor(Math.random()*10000);
-      localStorage.setItem("uid", uid);
+document.getElementById("today").innerText = today;
 
-      if (amount > balance) {
-        alert("❌ Not enough balance!");
-        return;
-      }
+// Daily reset
+if(lastDate !== today){
+  counter = 0;
+  localStorage.setItem("lastDate", today);
+}
+document.getElementById("counter").innerText = counter;
+document.getElementById("balance").innerText = balance;
 
-      let withdraws = JSON.parse(localStorage.getItem("withdraws") || "[]");
-      withdraws.push({ uid, method, number, amount, date: today });
-      localStorage.setItem("withdraws", JSON.stringify(withdraws));
+// Start Task (Open Smartlink)
+function startTask(){
+  window.open("https://www.revenuecpmgate.com/wgtf4tqw6y?key=738aa4ec313bf3304ba27e7746425ba2","_blank");
 
-      alert("✅ Withdraw Request Submitted!");
-      loadWithdraws();
-    }
+  counter++;
+  balance += adPoint;
 
-    function loginAdmin() {
-      let pass = document.getElementById("adminPass").value;
-      if (pass === "eatt7242888") {
-        document.getElementById("adminPanel").style.display = "block";
-        loadUsers();
-        loadWithdraws();
-      } else {
-        alert("Wrong Password!");
-      }
-    }
+  localStorage.setItem("counter", counter);
+  localStorage.setItem("balance", balance);
 
-    function saveUser() {
-      let user = "user-" + (localStorage.getItem("uid") || Math.floor(Math.random()*10000));
-      localStorage.setItem("uid", user);
+  document.getElementById("counter").innerText = counter;
+  document.getElementById("balance").innerText = balance;
 
-      let users = JSON.parse(localStorage.getItem("users") || "{}");
-      users[user] = { counter, balance };
-      localStorage.setItem("users", JSON.stringify(users));
-    }
+  saveUser();
+}
 
-    function loadUsers() {
-      let users = JSON.parse(localStorage.getItem("users") || "{}");
-      let table = document.getElementById("userTable");
-      table.innerHTML = "";
-      for (let u in users) {
-        let row = `<tr><td>${u}</td><td>${users[u].counter}</td><td>${users[u].balance}</td></tr>`;
-        table.innerHTML += row;
-      }
-    }
+// Withdraw
+function withdraw(){
+  let method = document.getElementById("method").value;
+  let number = document.getElementById("number").value;
+  let amount = parseInt(document.getElementById("amount").value);
 
-    function loadWithdraws() {
-      let withdraws = JSON.parse(localStorage.getItem("withdraws") || "[]");
-      let table = document.getElementById("withdrawTable");
-      table.innerHTML = "";
-      withdraws.forEach((w, index) => {
-        let row = `
-          <tr>
-            <td>${w.uid}</td>
-            <td>${w.method}</td>
-            <td>${w.number}</td>
-            <td>${w.amount}</td>
-            <td>${w.date}</td>
-            <td>
-              <button onclick="approveWithdraw(${index})" style="background:green;">Approve</button>
-              <button onclick="rejectWithdraw(${index})" style="background:red;">Reject</button>
-            </td>
-          </tr>`;
-        table.innerHTML += row;
-      });
-    }
+  if(amount <= 0 || amount > balance){
+    alert("Invalid Amount!");
+    return;
+  }
 
-    function approveWithdraw(index) {
-      let withdraws = JSON.parse(localStorage.getItem("withdraws") || "[]");
-      let w = withdraws[index];
+  let uid = localStorage.getItem("uid") || ("user-" + Math.floor(Math.random()*10000));
+  localStorage.setItem("uid", uid);
 
-      // ✅ Balance থেকে কেটে নেওয়া
-      if (w.amount <= balance) {
-        balance -= w.amount;
-        localStorage.setItem("balance", balance);
-        document.getElementById("balance").innerText = balance;
-      }
+  let withdraws = JSON.parse(localStorage.getItem("withdraws") || "[]");
+  withdraws.push({uid, method, number, amount, date: today});
+  localStorage.setItem("withdraws", JSON.stringify(withdraws));
 
-      alert("✅ Approved: " + w.uid + " - " + w.amount + "৳");
-      withdraws.splice(index, 1);
-      localStorage.setItem("withdraws", JSON.stringify(withdraws));
-      loadWithdraws();
-    }
+  alert("Withdraw Requested: " + method + " - " + number + " - " + amount + "৳");
+}
 
-    function rejectWithdraw(index) {
-      let withdraws = JSON.parse(localStorage.getItem("withdraws") || "[]");
-      let w = withdraws[index];
-      alert("❌ Rejected: " + w.uid + " - " + w.amount + "৳");
-      withdraws.splice(index, 1);
-      localStorage.setItem("withdraws", JSON.stringify(withdraws));
-      loadWithdraws();
-    }
+// Admin Login
+function loginAdmin(){
+  let pass = document.getElementById("adminPass").value;
+  if(pass === "eatt7242888"){
+    document.getElementById("adminPanel").style.display = "block";
+    loadUsers();
+    loadWithdraws();
+    document.getElementById("adPoint").value = adPoint;
+  } else alert("Wrong Password!");
+}
 
-    function updateIp() {
-      let ip = document.getElementById("allowedIp").value;
-      localStorage.setItem("allowedIp", ip);
-      alert("IP restriction updated (Demo only).");
-    }
-  </script>
+// Save user
+function saveUser(){
+  let user = localStorage.getItem("uid") || ("user-" + Math.floor(Math.random()*10000));
+  localStorage.setItem("uid", user);
+
+  let users = JSON.parse(localStorage.getItem("users") || "{}");
+  users[user] = { counter, balance };
+  localStorage.setItem("users", JSON.stringify(users));
+}
+
+// Load Users
+function loadUsers(){
+  let users = JSON.parse(localStorage.getItem("users") || "{}");
+  let table = document.getElementById("userTable");
+  table.innerHTML = "";
+  for(let u in users){
+    table.innerHTML += `<tr><td>${u}</td><td>${users[u].counter}</td><td>${users[u].balance}</td></tr>`;
+  }
+}
+
+// Load Withdraws
+function loadWithdraws(){
+  let withdraws = JSON.parse(localStorage.getItem("withdraws") || "[]");
+  let table = document.getElementById("withdrawTable");
+  table.innerHTML = "";
+  withdraws.forEach(w => {
+    table.innerHTML += `<tr><td>${w.uid}</td><td>${w.method}</td><td>${w.number}</td><td>${w.amount}</td><td>${w.date}</td></tr>`;
+  });
+}
+
+// Update IP
+function updateIp(){
+  let ip = document.getElementById("allowedIp").value;
+  localStorage.setItem("allowedIp", ip);
+  alert("IP restriction updated (Demo only).");
+}
+
+// Update Points per Ad
+function updateAdPoint(){
+  let val = parseInt(document.getElementById("adPoint").value);
+  if(val > 0){
+    adPoint = val;
+    localStorage.setItem("adPoint", adPoint);
+    alert("Points per Ad updated to " + adPoint);
+  } else alert("Invalid value!");
+}
+</script>
+
 </body>
-        </html>
+                          </html>
