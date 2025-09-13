@@ -2,134 +2,286 @@
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>Earn & Reward - Ad Astra</title>
+  <title>Mini App - Adsterra Earn</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ✅ Adsterra Popunder / Interstitial Script -->
+  <script type='text/javascript' src='https://www.profitablecpmrate.com/xnnrtbjs/2e/45/62/2e4562fef89f8c33f8d3c4b3b9d3e6b0.js'></script>
+
+  <!-- ✅ Adsterra Banner Example -->
+  <script type='text/javascript' src='https://www.profitablecpmrate.com/xxxyyy.js'></script>
 
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f9f9f9;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f0f2f5;
       margin: 0;
       padding: 0;
-      text-align: center;
     }
     header {
-      background: #4CAF50;
+      background: linear-gradient(45deg, #007bff, #00c6ff);
       color: white;
-      padding: 12px;
-      font-size: 18px;
-      font-weight: bold;
-      display: flex;
-      justify-content: space-between;
-    }
-    .container {
-      margin-top: 40px;
-      padding: 20px;
-    }
-    button {
-      background: #4CAF50;
-      color: white;
-      border: none;
-      padding: 15px 30px;
-      font-size: 18px;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-    button:active {
-      background: #3e8e41;
-    }
-    .counter {
-      margin-top: 20px;
+      padding: 15px;
       font-size: 22px;
       font-weight: bold;
-      color: #333;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     }
-    .ads {
-      margin-top: 30px;
-    }
-    .ad-box {
-      margin: 15px auto;
-      padding: 10px;
-      border: 1px solid #ccc;
-      min-height: 90px;
+    .container { margin: 15px; }
+    .card {
       background: white;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+    .card:hover { transform: scale(1.01); }
+    h3 { margin: 10px 0; color: #333; }
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 15px;
+      margin-top: 8px;
+    }
+    button:hover { background: #0056b3; }
+    input, select {
+      padding: 10px;
+      width: 90%;
+      margin: 8px 0;
+      border: 1px solid #ddd;
       border-radius: 8px;
+    }
+    .admin { display: none; text-align: left; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    table, th, td { border: 1px solid #ddd; padding: 6px; text-align: center; }
+    th { background: #f9f9f9; }
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: white;
+      text-align: center;
+      padding: 10px;
+      border-top: 1px solid #ddd;
     }
   </style>
 </head>
 <body>
+  <header>💰 Adsterra Mini App</header>
 
-  <!-- Header with Date -->
-  <header>
-    <div>Earn & Reward</div>
-    <div id="todayDate"></div>
-  </header>
-
-  <div class="container">
-    <button onclick="startEarn()">🚀 Start Earn</button>
-    <div class="counter">Ads Watched Today: <span id="adCount">0</span></div>
-    
-    <div class="ads">
-      <h3>Sponsored Ads</h3>
-      <div id="bannerAd" class="ad-box">[Banner Ad]</div>
-      <div id="nativeAd" class="ad-box">[Native Banner Ad]</div>
-      <div id="popAd" class="ad-box">[Popunder Ad]</div>
-      <div id="smartlink" class="ad-box">[Smartlink Ad]</div>
-    </div>
+  <!-- Banner Ad -->
+  <div class="card">
+    <h4>Sponsored</h4>
+    <script type="text/javascript" src="https://www.profitablecpmrate.com/xxxyyy.js"></script>
   </div>
 
-  <script>
-    // ========================
-    // Date (Bangladesh Time)
-    // ========================
-    function updateDate() {
-      let now = new Date();
-      let options = { timeZone: "Asia/Dhaka" };
-      let bdDate = new Intl.DateTimeFormat("en-GB", options).format(now);
-      document.getElementById("todayDate").innerText = bdDate;
-    }
-    updateDate();
+  <div class="container">
 
-    // ========================
-    // Daily Counter (reset 00:00)
-    // ========================
-    let adCount = localStorage.getItem("adCount") || 0;
-    let lastDate = localStorage.getItem("lastDate");
-    let today = new Intl.DateTimeFormat("en-GB", { timeZone: "Asia/Dhaka" }).format(new Date());
+    <!-- আজকের তারিখ -->
+    <div class="card">
+      <p>📅 আজকের তারিখ: <span id="today"></span></p>
+    </div>
+
+    <!-- Balance & Counter -->
+    <div class="card">
+      <h3>💵 Balance: <span id="balance">0</span> ৳</h3>
+      <p>📊 আজকে Ads দেখা হয়েছে: <span id="counter">0</span></p>
+      <button onclick="startTask()">▶ Start Task (Show Ad)</button>
+    </div>
+
+    <!-- Withdraw -->
+    <div class="card">
+      <h3>💳 Withdraw</h3>
+      <select id="method">
+        <option>Bkash</option>
+        <option>Nagad</option>
+      </select><br>
+      <input type="text" id="number" placeholder="Enter Number"><br>
+      <input type="number" id="amount" placeholder="Amount"><br>
+      <button onclick="withdraw()">Request Withdraw</button>
+    </div>
+
+    <!-- Admin Login -->
+    <div class="card">
+      <h3>🔑 Admin Panel</h3>
+      <input type="password" id="adminPass" placeholder="Enter Password">
+      <button onclick="loginAdmin()">Login</button>
+    </div>
+
+    <!-- Admin Panel -->
+    <div class="card admin" id="adminPanel">
+      <h3>📋 Admin Dashboard</h3>
+      <p>Allowed IP: <input type="text" id="allowedIp" value="0"> (0 = All)</p>
+      <button onclick="updateIp()">Update IP Restriction</button>
+
+      <h4>👥 Users List</h4>
+      <table>
+        <thead><tr><th>User</th><th>Ads Seen</th><th>Balance</th></tr></thead>
+        <tbody id="userTable"></tbody>
+      </table>
+
+      <h4>💳 Withdraw Requests</h4>
+      <table>
+        <thead>
+          <tr><th>User</th><th>Method</th><th>Number</th><th>Amount</th><th>Date</th><th>Action</th></tr>
+        </thead>
+        <tbody id="withdrawTable"></tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- Footer Banner -->
+  <footer>
+    <h4>Sponsored</h4>
+    <script type="text/javascript" src="https://www.profitablecpmrate.com/xxxyyy.js"></script>
+  </footer>
+
+  <script>
+    let counter = localStorage.getItem("counter") || 0;
+    let balance = localStorage.getItem("balance") || 0;
+    let lastDate = localStorage.getItem("lastDate") || "";
+    let today = new Date().toLocaleDateString();
+
+    document.getElementById("today").innerText = today;
 
     if (lastDate !== today) {
-      adCount = 0;
-      localStorage.setItem("adCount", adCount);
+      counter = 0;
       localStorage.setItem("lastDate", today);
     }
-    document.getElementById("adCount").innerText = adCount;
 
-    // ========================
-    // Start Earn Button (Trigger Popunder / Smartlink)
-    // ========================
-    function startEarn() {
-      // Popunder
-      window.open("YOUR_POPUNDER_URL", "_blank");
+    document.getElementById("counter").innerText = counter;
+    document.getElementById("balance").innerText = balance;
 
-      // Smartlink
-      window.open("YOUR_SMARTLINK_URL", "_blank");
+    function startTask() {
+      // ✅ Interstitial Ad
+      window.open("https://www.profitablecpmrate.com/xnnrtbjs", "_blank");
 
-      // Counter increase
-      adCount++;
-      localStorage.setItem("adCount", adCount);
-      document.getElementById("adCount").innerText = adCount;
+      counter++;
+      balance = parseInt(balance) + 1;
+
+      localStorage.setItem("counter", counter);
+      localStorage.setItem("balance", balance);
+
+      document.getElementById("counter").innerText = counter;
+      document.getElementById("balance").innerText = balance;
+
+      saveUser();
     }
 
-    // ========================
-    // Load Banner + Native Ads
-    // ========================
-    function loadAds() {
-      document.getElementById("bannerAd").innerHTML = '<script src="YOUR_BANNER_TAG"><\/script>';
-      document.getElementById("nativeAd").innerHTML = '<script src="YOUR_NATIVE_TAG"><\/script>';
-      document.getElementById("popAd").innerHTML = 'Popunder linked to Start Earn button.';
-      document.getElementById("smartlink").innerHTML = 'Smartlink linked to Start Earn button.';
+    function withdraw() {
+      let method = document.getElementById("method").value;
+      let number = document.getElementById("number").value;
+      let amount = document.getElementById("amount").value;
+      let uid = localStorage.getItem("uid") || "user-" + Math.floor(Math.random()*10000);
+      localStorage.setItem("uid", uid);
+
+      if (amount > balance) {
+        alert("❌ Not enough balance!");
+        return;
+      }
+
+      let withdraws = JSON.parse(localStorage.getItem("withdraws") || "[]");
+      withdraws.push({ uid, method, number, amount, date: today });
+      localStorage.setItem("withdraws", JSON.stringify(withdraws));
+
+      alert("✅ Withdraw Request Submitted!");
+      loadWithdraws();
     }
-    loadAds();
+
+    function loginAdmin() {
+      let pass = document.getElementById("adminPass").value;
+      if (pass === "eatt7242888") {
+        document.getElementById("adminPanel").style.display = "block";
+        loadUsers();
+        loadWithdraws();
+      } else {
+        alert("Wrong Password!");
+      }
+    }
+
+    function saveUser() {
+      let user = "user-" + (localStorage.getItem("uid") || Math.floor(Math.random()*10000));
+      localStorage.setItem("uid", user);
+
+      let users = JSON.parse(localStorage.getItem("users") || "{}");
+      users[user] = { counter, balance };
+      localStorage.setItem("users", JSON.stringify(users));
+    }
+
+    function loadUsers() {
+      let users = JSON.parse(localStorage.getItem("users") || "{}");
+      let table = document.getElementById("userTable");
+      table.innerHTML = "";
+      for (let u in users) {
+        let row = `<tr><td>${u}</td><td>${users[u].counter}</td><td>${users[u].balance}</td></tr>`;
+        table.innerHTML += row;
+      }
+    }
+
+    function loadWithdraws() {
+      let withdraws = JSON.parse(localStorage.getItem("withdraws") || "[]");
+      let table = document.getElementById("withdrawTable");
+      table.innerHTML = "";
+      withdraws.forEach((w, index) => {
+        let row = `
+          <tr>
+            <td>${w.uid}</td>
+            <td>${w.method}</td>
+            <td>${w.number}</td>
+            <td>${w.amount}</td>
+            <td>${w.date}</td>
+            <td>
+              <button onclick="approveWithdraw(${index})" style="background:green;">Approve</button>
+              <button onclick="rejectWithdraw(${index})" style="background:red;">Reject</button>
+            </td>
+          </tr>`;
+        table.innerHTML += row;
+      });
+    }
+
+    function approveWithdraw(index) {
+      let withdraws = JSON.parse(localStorage.getItem("withdraws") || "[]");
+      let w = withdraws[index];
+
+      // ✅ Balance থেকে কেটে নেওয়া
+      if (w.amount <= balance) {
+        balance -= w.amount;
+        localStorage.setItem("balance", balance);
+        document.getElementById("balance").innerText = balance;
+      }
+
+      alert("✅ Approved: " + w.uid + " - " + w.amount + "৳");
+      withdraws.splice(index, 1);
+      localStorage.setItem("withdraws", JSON.stringify(withdraws));
+      loadWithdraws();
+    }
+
+    function rejectWithdraw(index) {
+      let withdraws = JSON.parse(localStorage.getItem("withdraws") || "[]");
+      let w = withdraws[index];
+      alert("❌ Rejected: " + w.uid + " - " + w.amount + "৳");
+      withdraws.splice(index, 1);
+      localStorage.setItem("withdraws", JSON.stringify(withdraws));
+      loadWithdraws();
+    }
+
+    function updateIp() {
+      let ip = document.getElementById("allowedIp").value;
+      localStorage.setItem("allowedIp", ip);
+      alert("IP restriction updated (Demo only).");
+    }
   </script>
 </body>
-</html>
+        </html>
